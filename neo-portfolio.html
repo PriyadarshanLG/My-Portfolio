@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marjo Ballabani — Senior Software Engineer</title>
+  <meta name="description"
+    content="Personal portfolio of Marjo Ballabani, Senior Software Engineer based in Munich, Germany. Specializing in React, Node.js, Python, Go, and Cloud technologies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=Lobster&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="neo-style.css" />
+</head>
+
+<body>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="loader-overlay">
+    <!-- Floating corner icons -->
+    <div class="loader-icon li-tl">&lt;/&gt;</div>
+    <div class="loader-icon li-tr">&gt;_</div>
+    <div class="loader-icon li-bl2">
+      <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#111"
+          d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65ZM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5Z" />
+      </svg>
+    </div>
+
+    <!-- Center: blocks + laptop -->
+    <div class="loader-center">
+      <div class="loader-blocks">
+        <div class="loader-block block-m">L</div>
+        <div class="loader-block block-b">G</div>
+      </div>
+      <!-- Laptop base below blocks -->
+      <div class="loader-laptop">
+        <div class="laptop-body">
+          <div class="laptop-progress" id="loaderBar"></div>
+        </div>
+        <div class="laptop-foot"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== NAVIGATION ===== -->
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="nav-logo">MB<span class="dot">.</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="about">
+      <div class="hero-content">
+        <p class="hero-greeting">Hi there! 👋</p>
+        <h1 class="hero-title">
+          I'm <span class="hero-name">Priyadarshan L G.</span>
+        </h1>
+        <p class="hero-desc">
+          Based in <strong>Munich, Germany</strong>, I'm a <span class="highlight">Senior Software Engineer</span>. I
+          love
+          to
+          work with distributed systems, data pipelines, and cloud
+          technologies. I'm passionate about microservices, full-stack
+          development, and building cool stuff.
+        </p>
+
+        <div class="hero-social-row">
+          <a href="#" class="social-icon-box" aria-label="GitHub">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon-box" aria-label="LinkedIn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon-box" aria-label="Resume">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
+              <path
+                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-3h8v2H8v-2z" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero-bottom-row">
+          <a href="#contact" class="btn btn-cta">Get in Touch!</a>
+          <div class="coffee-text">
+            <span class="coffee-emoji">☕</span>
+            <span class="coffee-label">Buy me a coffee</span>
+            <svg class="coffee-arrow" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M5 5 Q15 2 20 12 Q25 22 22 28" stroke="#111" stroke-width="2" fill="none"
+                stroke-linecap="round" />
+              <path d="M18 26 L22 28 L24 24" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-avatar-wrapper">
+        <div class="avatar-card">
+          <div class="avatar-tape"></div>
+          <div class="floating-icon fi-code">&lt;/&gt;</div>
+          <div class="floating-icon fi-save">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#111">
+              <path
+                d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4zm-5 16a3 3 0 110-6 3 3 0 010 6zm3-10H7V5h8v4z" />
+            </svg>
+          </div>
+          <div class="floating-icon fi-terminal">&gt;_</div>
+          <img src="IMG_20260301_143329_918.jpg" alt="Profile photo" class="avatar-img" />
+          <div class="avatar-ribbon">
+            <span class="ribbon-text">Full-Stack Ninja</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAMMING LANGUAGES ROW ===== -->
+    <div class="hero-tech-container">
+      <div class="hero-tech-row">
+        <div class="tech-pill-large">
+          <span class="tech-icon">⬢</span> Node.js
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">⚛️</span> React
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">🐍</span> Python
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">JS</span> JavaScript
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">🛡️</span> HTML
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">TS</span> TypeScript
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">☁️</span> Google Cloud
+        </div>
+        <div class="tech-pill-large">
+          <span class="tech-icon">🐳</span> Docker
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TORN EDGE DIVIDER ===== -->
+    <div class="torn-divider">
+      <div class="torn-plaster"></div>
+    </div>
+
+    <!-- ===== JOURNEY ===== -->
+    <section class="section journey-section" id="journey">
+      <div class="section-header">
+        <h2 class="section-title">My Journey <span class="ribbon-middle">🗺</span></h2>
+        <p class="section-sub">From Albania to Munich — a global engineering story</p>
+      </div>
+
+      <div class="journey-grid">
+        <!-- Map -->
+        <div class="map-card card">
+          <div class="map-container">
+            <svg viewBox="0 0 600 450" class="europe-map" xmlns="http://www.w3.org/2000/svg">
+              <!-- Stylized Europe landmass -->
+              <rect width="600" height="450" fill="#f5f0e8" rx="12" />
+              <!-- Route line -->
+              <polyline points="395,310 370,240 310,200 180,155" stroke="#FFD600" stroke-width="3" fill="none"
+                stroke-dasharray="8,4" />
+              <!-- Albania pin -->
+              <g class="map-pin" transform="translate(392,308)">
+                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
+                <text x="0" y="5" text-anchor="middle" font-size="14">🇦🇱</text>
+                <rect x="-30" y="-42" width="60" height="22" fill="#111" rx="4" />
+                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">Albania</text>
+              </g>
+              <!-- France pin -->
+              <g class="map-pin" transform="translate(268,240)">
+                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
+                <text x="0" y="5" text-anchor="middle" font-size="14">🇫🇷</text>
+                <rect x="-28" y="-42" width="56" height="22" fill="#111" rx="4" />
+                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">France</text>
+              </g>
+              <!-- Germany pin -->
+              <g class="map-pin" transform="translate(310,195)">
+                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
+                <text x="0" y="5" text-anchor="middle" font-size="14">🇩🇪</text>
+                <rect x="-36" y="-42" width="72" height="22" fill="#111" rx="4" />
+                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">Germany</text>
+              </g>
+              <!-- USA pin (off map left) -->
+              <g class="map-pin" transform="translate(80,150)">
+                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
+                <text x="0" y="5" text-anchor="middle" font-size="14">🇺🇸</text>
+                <rect x="-22" y="-42" width="44" height="22" fill="#111" rx="4" />
+                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">USA</text>
+              </g>
+              <!-- dashed to USA -->
+              <polyline points="180,155 80,150" stroke="#FFD600" stroke-width="3" fill="none" stroke-dasharray="8,4" />
+              <!-- Map label -->
+              <text x="300" y="420" text-anchor="middle" font-size="13" fill="#888" font-family="Space Grotesk">A global
+                engineering journey</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-card card">
+          <h3 class="timeline-title">Career Timeline</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2020 – Present</span>
+                <h4>Senior Software Engineer</h4>
+                <p>Munich, Germany — Cloud-native apps with Go, Kubernetes & GCP</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2017 – 2020</span>
+                <h4>Software Engineer</h4>
+                <p>France — Full-stack development with React & Node.js</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2015 – 2017</span>
+                <h4>Junior Developer</h4>
+                <p>Albania — Started career in web development & Python</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2009 – 2013</span>
+                <h4>BSc Computer Science</h4>
+                <p>University of Tirana, Albania</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section skills-section" id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="section-sub">Technologies I work with daily</p>
+      </div>
+
+      <div class="skills-categories">
+
+        <div class="skill-group card">
+          <h3 class="skill-group-title"><span class="skill-icon">🎨</span> Frontend</h3>
+          <div class="skill-grid">
+            <div class="skill-pill">React</div>
+            <div class="skill-pill">TypeScript</div>
+            <div class="skill-pill">Next.js</div>
+            <div class="skill-pill">Vue.js</div>
+            <div class="skill-pill">CSS/SCSS</div>
+            <div class="skill-pill">Tailwind</div>
+          </div>
+        </div>
+
+        <div class="skill-group card">
+          <h3 class="skill-group-title"><span class="skill-icon">⚙️</span> Backend</h3>
+          <div class="skill-grid">
+            <div class="skill-pill">Node.js</div>
+            <div class="skill-pill">Go</div>
+            <div class="skill-pill">Python</div>
+            <div class="skill-pill">Express</div>
+            <div class="skill-pill">GraphQL</div>
+            <div class="skill-pill">REST APIs</div>
+          </div>
+        </div>
+
+        <div class="skill-group card">
+          <h3 class="skill-group-title"><span class="skill-icon">☁️</span> Cloud & DevOps</h3>
+          <div class="skill-grid">
+            <div class="skill-pill">Google Cloud</div>
+            <div class="skill-pill">Docker</div>
+            <div class="skill-pill">Kubernetes</div>
+            <div class="skill-pill">CI/CD</div>
+            <div class="skill-pill">Terraform</div>
+            <div class="skill-pill">GitHub Actions</div>
+          </div>
+        </div>
+
+        <div class="skill-group card">
+          <h3 class="skill-group-title"><span class="skill-icon">🗄️</span> Databases</h3>
+          <div class="skill-grid">
+            <div class="skill-pill">PostgreSQL</div>
+            <div class="skill-pill">MongoDB</div>
+            <div class="skill-pill">Redis</div>
+            <div class="skill-pill">MySQL</div>
+            <div class="skill-pill">Firebase</div>
+            <div class="skill-pill">BigQuery</div>
+          </div>
+        </div>
+
+        <div class="skill-group card">
+          <h3 class="skill-group-title"><span class="skill-icon">🛠️</span> Tools</h3>
+          <div class="skill-grid">
+            <div class="skill-pill">Git</div>
+            <div class="skill-pill">VSCode</div>
+            <div class="skill-pill">Figma</div>
+            <div class="skill-pill">Postman</div>
+            <div class="skill-pill">Jira</div>
+            <div class="skill-pill">Linux</div>
+          </div>
+        </div>
+
+        <!-- Languages spoken -->
+        <div class="skill-group card languages-card">
+          <h3 class="skill-group-title"><span class="skill-icon">🌍</span> Languages</h3>
+          <div class="lang-list">
+            <div class="lang-item">
+              <div class="lang-meta">
+                <span>Albanian</span><span class="lang-level">Native</span>
+              </div>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-meta">
+                <span>English</span><span class="lang-level">Fluent</span>
+              </div>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width:90%"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-meta">
+                <span>German</span><span class="lang-level">Professional</span>
+              </div>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width:75%"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-meta">
+                <span>French</span><span class="lang-level">Conversational</span>
+              </div>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width:55%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== FEATURED PROJECT ===== -->
+    <section class="section project-section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Project</h2>
+        <p class="section-sub">Building tools that developers love</p>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card card featured">
+          <div class="project-tag">Open Source</div>
+          <h3 class="project-name">LazyFire 🔥</h3>
+          <p class="project-desc">
+            A CLI tool for lazy developers. Automate your Firebase deployments,
+            manage environments, and ship faster with a single command.
+            Built with Go for maximum performance.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Go</span>
+            <span class="tech-tag">CLI</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Open Source</span>
+          </div>
+          <div class="project-code-snippet">
+            <pre><code><span class="code-comment">// Deploy with one command</span>
+<span class="code-cmd">$ lazyfire deploy --env production</span>
+<span class="code-output">✓ Functions deployed (3.2s)</span>
+<span class="code-output">✓ Hosting deployed (1.4s)</span>
+<span class="code-output">✓ Rules updated (0.8s)</span>
+<span class="code-success">🔥 Deployed successfully!</span></code></pre>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
+            <a href="#" class="btn btn-secondary btn-sm">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="project-card card">
+          <div class="project-tag">Web App</div>
+          <h3 class="project-name">CloudDash ☁️</h3>
+          <p class="project-desc">
+            A real-time cloud infrastructure monitoring dashboard built with React and
+            Google Cloud APIs. Visualize costs, usage, and alerts in one place.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">GCP</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Charts.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card card">
+          <div class="project-tag">API</div>
+          <h3 class="project-name">Nexus API 🔗</h3>
+          <p class="project-desc">
+            High-performance REST & GraphQL API gateway built with Go.
+            Handles 10k+ req/s with built-in rate limiting and auth middleware.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Go</span>
+            <span class="tech-tag">GraphQL</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">K8s</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section education-section">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="edu-card card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-info">
+          <h3>Bachelor's in Computer Science</h3>
+          <p class="edu-school">University of Tirana, Albania</p>
+          <p class="edu-years">2009 – 2013</p>
+        </div>
+        <div class="edu-badge">BSc</div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact-section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-sub">Got a project in mind? Let's build something awesome.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info card">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Location</strong>
+              <p>Munich, Germany</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div>
+              <strong>Email</strong>
+              <p>marjo@ballabani.dev</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div>
+              <strong>LinkedIn</strong>
+              <p>linkedin.com/in/marjoballabani</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🐙</span>
+            <div>
+              <strong>GitHub</strong>
+              <p>github.com/marjoballabani</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form card" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Let's work together on..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message ✉️</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">MB<span class="dot">.</span></div>
+        <p>© 2024 Marjo Ballabani. Built with ❤️ and a lot of ☕</p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#journey">Journey</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="neo-script.js"></script>
+</body>
+
+</html>
