@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#c8c6c0"/>
+  <rect x="48" y="56" width="544" height="288" rx="14" fill="#fff" stroke="#bbb"/>
+  <text x="120" y="140" font-family="Georgia,serif" font-size="48" fill="#0a0a0a" opacity="0.15">अ</text>
+  <text x="280" y="160" font-family="Georgia,serif" font-size="42" fill="#0a0a0a" opacity="0.12">ಕ</text>
+  <text x="420" y="130" font-family="Georgia,serif" font-size="40" fill="#0a0a0a" opacity="0.12">அ</text>
+  <rect x="80" y="200" width="480" height="12" rx="3" fill="#e4e2dc"/>
+  <rect x="80" y="224" width="400" height="10" rx="3" fill="#eee"/>
+  <rect x="80" y="248" width="440" height="10" rx="3" fill="#eee"/>
+  <rect x="80" y="288" width="120" height="36" rx="18" fill="#0a0a0a"/>
+  <rect x="220" y="288" width="100" height="36" rx="18" fill="#e4e2dc" stroke="#0a0a0a"/>
+  <text x="320" y="380" font-family="system-ui,sans-serif" font-size="14" fill="#555" text-anchor="middle">Indian Language Learning</text>
+</svg>

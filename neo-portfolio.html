@@ -3,540 +3,1147 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Priyadarshan L G -Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Priyadarshan LG" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Priyadarshan L G | Full-Stack Developer</title>
   <meta name="description"
-    content="Personal portfolio of Priyadarshan L G, Senior Software Engineer based in Hassan, India. Specializing in React, Node.js, Python, Go, and Cloud technologies." />
+    content="Portfolio of Priyadarshan L G — MERN stack & AI developer, CSE student at Navkis College of Engineering, Hassan, Karnataka." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=Lobster&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400;1,500&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="neo-style.css" />
+  <meta name="theme-color" content="#e4e2dc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <link rel="apple-touch-icon" href="assets/profile.jpg" />
+  <!-- Always start at top on refresh / reopen (before paint) -->
+  <script>
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="neo-style.css?v=104" />
+  <!-- Scroll animations (AOS) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
 
-<body>
+<body class="premium-ui is-loading">
 
-  <!-- ===== LOADING SCREEN ===== -->
-  <div id="loader-overlay">
-    <!-- Floating corner icons -->
-    <div class="loader-icon li-tl">&lt;/&gt;</div>
-    <div class="loader-icon li-tr">&gt;_</div>
-    <div class="loader-icon li-bl2">
-      <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#111"
-          d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65ZM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5Z" />
-      </svg>
-    </div>
-
-    <!-- Center: blocks + laptop -->
-    <div class="loader-center">
-      <div class="loader-blocks">
-        <div class="loader-block block-m">L</div>
-        <div class="loader-block block-b">G</div>
-      </div>
-      <!-- Laptop base below blocks -->
-      <div class="loader-laptop">
-        <div class="laptop-body">
-          <div class="laptop-progress" id="loaderBar"></div>
-        </div>
-        <div class="laptop-foot"></div>
+  <!-- LG. splash (~1s on every load) -->
+  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading">
+    <div class="page-loader-content">
+      <span class="page-loader-monogram" aria-hidden="true">LG.</span>
+      <div class="page-loader-line" aria-hidden="true">
+        <span class="page-loader-line-fill" id="pageLoaderLine"></span>
       </div>
     </div>
   </div>
 
+  <!-- Skeleton layout (after splash, until content ready) -->
+  <div class="skeleton-screen" id="pageSkeleton" aria-hidden="true">
+    <div class="skeleton-screen-inner">
+      <div class="skeleton-nav" aria-hidden="true">
+        <div class="skeleton-nav-brand">
+          <span class="skeleton-bone skeleton-bone--logo"></span>
+          <span class="skeleton-bone skeleton-bone--brand-name"></span>
+        </div>
+        <div class="skeleton-nav-links">
+          <span class="skeleton-bone skeleton-bone--nav-link"></span>
+          <span class="skeleton-bone skeleton-bone--nav-link"></span>
+          <span class="skeleton-bone skeleton-bone--nav-link"></span>
+          <span class="skeleton-bone skeleton-bone--nav-link"></span>
+          <span class="skeleton-bone skeleton-bone--nav-link skeleton-bone--nav-link-short"></span>
+        </div>
+        <span class="skeleton-bone skeleton-bone--menu"></span>
+      </div>
+      <div class="skeleton-hero" aria-hidden="true">
+        <div class="skeleton-hero-copy">
+          <span class="skeleton-bone skeleton-bone--line skeleton-bone--xs"></span>
+          <span class="skeleton-bone skeleton-bone--line skeleton-bone--xl"></span>
+          <span class="skeleton-bone skeleton-bone--line skeleton-bone--lg"></span>
+        </div>
+        <span class="skeleton-bone skeleton-bone--photo"></span>
+      </div>
+      <span class="skeleton-bone skeleton-bone--line skeleton-bone--full"></span>
+      <span class="skeleton-bone skeleton-bone--line skeleton-bone--sm"></span>
+      <div class="skeleton-cta-row" aria-hidden="true">
+        <span class="skeleton-bone skeleton-bone--btn"></span>
+        <span class="skeleton-bone skeleton-bone--btn"></span>
+        <span class="skeleton-bone skeleton-bone--btn skeleton-bone--btn-wide"></span>
+      </div>
+      <div class="skeleton-stats" aria-hidden="true">
+        <span class="skeleton-bone skeleton-bone--stat"></span>
+        <span class="skeleton-bone skeleton-bone--stat"></span>
+        <span class="skeleton-bone skeleton-bone--stat"></span>
+        <span class="skeleton-bone skeleton-bone--stat"></span>
+      </div>
+      <div class="skeleton-pills" aria-hidden="true">
+        <span class="skeleton-bone skeleton-bone--pill"></span>
+        <span class="skeleton-bone skeleton-bone--pill"></span>
+        <span class="skeleton-bone skeleton-bone--pill"></span>
+        <span class="skeleton-bone skeleton-bone--pill"></span>
+        <span class="skeleton-bone skeleton-bone--pill"></span>
+      </div>
+      <div class="skeleton-blocks" aria-hidden="true">
+        <span class="skeleton-bone skeleton-bone--tag"></span>
+        <span class="skeleton-bone skeleton-bone--heading"></span>
+        <span class="skeleton-bone skeleton-bone--card"></span>
+        <span class="skeleton-bone skeleton-bone--card skeleton-bone--card-short"></span>
+      </div>
+    </div>
+  </div>
 
-  <!-- ===== NAVIGATION ===== -->
-  <div class="page-wrapper">
-    <nav class="navbar">
-      <div class="nav-logo">PLG<span class="dot">.</span></div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#journey">Journey</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="#contact" class="nav-cta">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+    aria-valuenow="0" aria-label="Page scroll progress"></div>
+
+  <!-- Cursor glow (desktop) -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Project hover preview -->
+  <div class="proj-preview" id="projPreview" aria-hidden="true">
+    <img id="projPreviewImg" src="" alt="" />
+  </div>
+
+  <!-- Sticky navbar -->
+  <header class="site-nav" id="siteNav">
+    <div class="site-nav-inner">
+      <a href="#about" class="brand-mark">
+        <span class="brand-monogram">LG.</span>
+        <span class="brand-name">Priyadarshan L G</span>
+      </a>
+      <nav class="site-nav-links" aria-label="Main navigation">
+        <a href="#about">Home</a>
+        <a href="#about-detail">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="assets/Priyadarshan_L_G_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button type="button" class="nav-toggle" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav-panel" id="navPanel" aria-hidden="true">
+    <button type="button" class="nav-close" id="navClose" aria-label="Close menu">Close</button>
+    <nav class="nav-panel-links" aria-label="Mobile navigation">
+      <a href="#about">Home</a>
+      <a href="#about-detail">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="assets/Priyadarshan_L_G_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="about">
-      <div class="hero-content">
-        <p class="hero-greeting">Hi there! 👋</p>
-        <h1 class="hero-title">
-          I'm <span class="hero-name">Priyadarshan L G.</span>
-        </h1>
-        <p class="hero-desc">
-          Based in <strong>Hassan, Karnataka</strong>, I'm a <span class="highlight">Software Engineer</span>. I
-          love
-          to
-          work with distributed systems, data pipelines, and cloud
-          technologies. I'm passionate about microservices, full-stack
-          development, and building cool stuff.
+  <main>
+
+    <!-- ===== HOME (reference layout) ===== -->
+    <section class="home" id="about">
+      <div class="home-inner">
+
+        <div class="home-grid">
+          <!-- Left: intro -->
+          <div class="home-intro">
+            <div class="hero-headline">
+              <p class="hero-greet">Priyadarshan L G</p>
+              <h1 class="home-title">
+                <span class="title-line">Full-Stack</span>
+                <span class="title-line title-italic">&amp; AI</span>
+                <span class="title-line">Developer</span>
+              </h1>
+            </div>
+            <div class="home-photo-spacer home-photo-spacer--mob">
+              <figure class="home-photo">
+                <div class="photo-frame">
+                  <img src="assets/profile.jpg" alt="Priyadarshan L G" />
+                </div>
+              </figure>
+            </div>
+            <div class="home-desc-block">
+              <p class="home-desc">
+                <span class="text-full">Computer Science student specializing in MERN stack development, AI-powered
+                applications, and secure backend systems. Passionate about building scalable products
+                with clean UI and real-world impact.</span>
+                <span class="text-short">MERN &amp; AI developer — secure backends, clean UI, real-world products.</span>
+              </p>
+              <a href="#experience" class="hero-intern hero-intern--mob" aria-label="Intern at Tech Mahindra — view experience">
+                <img src="assets/companies/techmahindra.png" alt="Tech Mahindra" class="hero-intern-logo" width="88" height="21" loading="lazy" />
+                <span class="hero-intern-label">Intern</span>
+              </a>
+            </div>
+            <div class="hero-cta-row">
+              <a href="assets/Priyadarshan_L_G_Resume.pdf" class="cta-btn" download="Priyadarshan_L_G_Resume.pdf"
+                target="_blank" rel="noopener noreferrer">Download Resume</a>
+              <a href="#projects" class="cta-btn">View Projects</a>
+              <a href="#contact" class="cta-btn cta-btn--primary">Contact Me</a>
+            </div>
+            <a href="#experience" class="hero-intern hero-intern--desk" aria-label="Intern at Tech Mahindra — view experience">
+              <img src="assets/companies/techmahindra.png" alt="Tech Mahindra" class="hero-intern-logo" width="96" height="23" loading="lazy" />
+              <span class="hero-intern-label">Intern</span>
+            </a>
+          </div>
+
+          <!-- Center: portrait (desktop / tablet) -->
+          <div class="home-photo-spacer home-photo-spacer--desk">
+            <figure class="home-photo">
+              <div class="photo-frame" id="heroPhoto">
+                <img src="assets/profile.jpg" alt="Priyadarshan L G" />
+              </div>
+            </figure>
+          </div>
+
+          <!-- Right: highlights -->
+          <aside class="home-stats">
+            <div class="stat-item">
+              <span class="stat-text">Experience with <strong>MERN Stack</strong></span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+                </svg>
+              </span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-text"><strong>AI &amp; FinTech</strong> Projects</span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 3v3M6.5 6.5l2.1 2.1M3 12h3M6.5 17.5l2.1-2.1M12 18v3M17.5 17.5l-2.1-2.1M18 12h3M17.5 6.5l-2.1 2.1"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-text">Open to <strong>Full-Time Roles</strong></span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="2" y="7" width="20" height="14" rx="2"/>
+                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                </svg>
+              </span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-text">Based in <strong>Karnataka, India</strong></span>
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 21s7-4.5 7-10a7 7 0 1 0-14 0c0 5.5 7 10 7 10z"/>
+                  <circle cx="12" cy="11" r="2"/>
+                </svg>
+              </span>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Tech stack strip -->
+        <div class="tech-marquee" aria-label="Tech stack">
+          <div class="tech-marquee-track">
+            <ul class="tech-marquee-group">
+              <li><span class="tech-pill">React</span></li>
+              <li><span class="tech-pill">Node.js</span></li>
+              <li><span class="tech-pill">MongoDB</span></li>
+              <li><span class="tech-pill">Express</span></li>
+              <li><span class="tech-pill">Python</span></li>
+              <li><span class="tech-pill">AI / ML</span></li>
+              <li><span class="tech-pill">GitHub</span></li>
+              <li><span class="tech-pill">Tailwind CSS</span></li>
+              <li><span class="tech-pill">REST APIs</span></li>
+            </ul>
+            <ul class="tech-marquee-group" aria-hidden="true">
+              <li><span class="tech-pill">React</span></li>
+              <li><span class="tech-pill">Node.js</span></li>
+              <li><span class="tech-pill">MongoDB</span></li>
+              <li><span class="tech-pill">Express</span></li>
+              <li><span class="tech-pill">Python</span></li>
+              <li><span class="tech-pill">AI / ML</span></li>
+              <li><span class="tech-pill">GitHub</span></li>
+              <li><span class="tech-pill">Tailwind CSS</span></li>
+              <li><span class="tech-pill">REST APIs</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom services bar -->
+        <div class="services-bar">
+          <article class="service-cell hover-lift">
+            <h3>Full-Stack Development</h3>
+            <p>End-to-end web applications with React, Node.js, and scalable backend architecture.</p>
+          </article>
+          <article class="service-cell hover-lift">
+            <h3>FinTech &amp; Security</h3>
+            <p>Secure UPI systems with AI assistance and fraud detection for safer transactions.</p>
+          </article>
+          <article class="service-cell hover-lift">
+            <h3>Responsive UI</h3>
+            <p>Clean, modern interfaces optimized for performance across all devices.</p>
+          </article>
+          <article class="service-cell hover-lift">
+            <h3>Cloud &amp; Databases</h3>
+            <p>MongoDB, MySQL, and cloud-ready architectures for reliable data layers.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About / Summary -->
+    <section class="page-section" id="about-detail">
+      <div class="container" data-aos="fade-up">
+        <p class="section-tag" data-aos="fade-up" data-aos-delay="50">Profile</p>
+        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="100">Professional Summary</h2>
+        <p class="section-lead section-lead--compact" data-aos="fade-up" data-aos-delay="150">
+          <span class="text-full">Full-stack developer skilled in MERN stack, REST APIs, authentication systems, and
+          AI-assisted applications. Experienced in building scalable, responsive, and secure web
+          platforms.</span>
+          <span class="text-short">MERN, REST APIs, JWT auth &amp; AI apps — scalable, secure web platforms.</span>
+        </p>
+        <div class="about-row">
+          <article class="hover-lift" data-aos="fade-up" data-aos-delay="200">
+            <h3>Specialization</h3>
+            <p>MERN stack, secure backends (JWT), and AI-powered FinTech &amp; EdTech products.</p>
+          </article>
+          <article class="hover-lift" data-aos="fade-up" data-aos-delay="280">
+            <h3>Career Objective</h3>
+            <p>Full-stack software engineer role—shipping maintainable code, clean UX, and production-ready APIs.</p>
+          </article>
+          <article class="hover-lift" data-aos="fade-up" data-aos-delay="360">
+            <h3>Current Internship</h3>
+            <p>Pursuing a software engineering internship at Tech Mahindra Pvt. Ltd., learning enterprise delivery and team-based development.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="page-section page-section-alt" id="education">
+      <div class="container" data-aos="fade-up">
+        <p class="section-tag">Background</p>
+        <h2 class="section-heading">Education</h2>
+        <details class="section-accordion edu-accordion" id="eduAccordion">
+          <summary class="section-accordion-summary">View all education</summary>
+        <ul class="edu-list">
+          <li class="edu-entry hover-lift" data-aos="fade-up" data-aos-delay="100">
+            <span class="edu-date">2023 – 2027</span>
+            <div class="edu-body">
+              <strong>B.E. Computer Science &amp; Engineering</strong>
+              <span class="edu-school">Navkis College of Engineering · Hassan, Karnataka</span>
+              <span class="edu-meta">CGPA: 8.2 | Expected graduation 2027</span>
+              <p class="edu-coursework">
+                <span class="edu-label">Relevant coursework:</span>
+                Data Structures &amp; Algorithms, Database Management Systems, Object-Oriented Programming,
+                Web Technologies, Operating Systems, Artificial Intelligence
+              </p>
+            </div>
+          </li>
+          <li class="edu-entry">
+            <span class="edu-date">2021 – 2023</span>
+            <div class="edu-body">
+              <strong>Pre-University (PCMB)</strong>
+              <span class="edu-school">Excel PU College · Science stream</span>
+            </div>
+          </li>
+        </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="page-section" id="certifications">
+      <div class="container" data-aos="fade-up">
+        <p class="section-tag">Credentials</p>
+        <h2 class="section-heading section-heading--certs">Certifications</h2>
+        <details class="section-accordion cert-accordion" id="certAccordion">
+          <summary class="section-accordion-summary">View all certifications</summary>
+          <ul class="cert-list cert-list--grid">
+            <li class="cert-item">
+              <span class="cert-item-text"><strong>AI Fundamentals</strong> — IBM SkillsBuild</span>
+              <button type="button" class="cert-view-btn" data-cert-src="assets/certifications/ai-fundamentals.jpg"
+                data-cert-alt="AI Fundamentals — IBM SkillsBuild certificate">View</button>
+            </li>
+            <li class="cert-item">
+              <span class="cert-item-text"><strong>Cloud Computing</strong> — NPTEL, IIT Kharagpur</span>
+              <button type="button" class="cert-view-btn" data-cert-src="assets/certifications/cloud-computing.jpg"
+                data-cert-alt="Cloud Computing — NPTEL certificate">View</button>
+            </li>
+            <li class="cert-item">
+              <span class="cert-item-text"><strong>JavaScript &amp; App Dev</strong> — IIT Bombay</span>
+              <button type="button" class="cert-view-btn" data-cert-src="assets/certifications/javascript.jpg"
+                data-cert-alt="JavaScript &amp; App Dev — IIT Bombay certificate">View</button>
+            </li>
+            <li class="cert-item">
+              <span class="cert-item-text"><strong>Git &amp; Version Control</strong> — Udemy</span>
+              <button type="button" class="cert-view-btn" data-cert-src="assets/certifications/git.jpg"
+                data-cert-alt="Git &amp; Version Control — Udemy certificate">View</button>
+            </li>
+            <li class="cert-item">
+              <span class="cert-item-text"><strong>Web Development</strong> — Infosys Springboard</span>
+              <button type="button" class="cert-view-btn" data-cert-src="assets/certifications/web-development.jpg"
+                data-cert-alt="Web Development — Infosys Springboard certificate">View</button>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="page-section page-section-alt" id="skills">
+      <div class="container" data-aos="fade-up">
+        <p class="section-tag">Expertise</p>
+        <h2 class="section-heading">Technical Skills</h2>
+
+        <details class="section-accordion skills-accordion" id="skillsAccordion">
+          <summary class="section-accordion-summary">View all technical skills</summary>
+          <div class="skills-compact skills-compact--desk" aria-hidden="true">
+            <span class="skill-chip">React</span>
+            <span class="skill-chip">JavaScript</span>
+            <span class="skill-chip">Tailwind</span>
+            <span class="skill-chip">HTML/CSS</span>
+            <span class="skill-chip">Node.js</span>
+            <span class="skill-chip">Express</span>
+            <span class="skill-chip">MongoDB</span>
+            <span class="skill-chip">JWT</span>
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">ML Basics</span>
+            <span class="skill-chip">OpenAI APIs</span>
+            <span class="skill-chip">Git</span>
+            <span class="skill-chip">GitHub</span>
+            <span class="skill-chip">VS Code</span>
+            <span class="skill-chip">Postman</span>
+          </div>
+          <div class="skills-grid skills-grid--detail">
+          <!-- Frontend -->
+          <article class="skill-card hover-lift" data-aos="fade-up" data-aos-delay="80">
+            <header class="skill-card-head">
+              <span class="skill-cat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                </svg>
+              </span>
+              <h3 class="skill-card-title">Frontend</h3>
+            </header>
+            <ul class="skill-items">
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="3.5"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">React</span><span class="skill-item-pct">88%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 88%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">JavaScript</span><span class="skill-item-pct">90%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 90%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16v4H4zM4 14h10v4H4z"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Tailwind</span><span class="skill-item-pct">85%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 85%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">HTML / CSS</span><span class="skill-item-pct">92%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 92%"></span></div>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Backend -->
+          <article class="skill-card hover-lift" data-aos="fade-up" data-aos-delay="140">
+            <header class="skill-card-head">
+              <span class="skill-cat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="2" y="3" width="20" height="6" rx="1"/><rect x="2" y="15" width="20" height="6" rx="1"/><circle cx="6" cy="6" r="1" fill="currentColor"/><circle cx="6" cy="18" r="1" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3 class="skill-card-title">Backend</h3>
+            </header>
+            <ul class="skill-items">
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v20M8 6c-2 1-3 3-3 6s1 5 3 6M16 6c2 1 3 3 3 6s-1 5-3 6"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Node.js</span><span class="skill-item-pct">86%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 86%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Express.js</span><span class="skill-item-pct">84%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 84%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">MongoDB</span><span class="skill-item-pct">82%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 82%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">JWT</span><span class="skill-item-pct">80%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 80%"></span></div>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- AI & ML -->
+          <article class="skill-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+            <header class="skill-card-head">
+              <span class="skill-cat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 3a6 6 0 0 1 6 6c0 2.5-1.5 4.5-3.5 5.5L12 21l-2.5-6.5A6 6 0 0 1 12 3z"/><circle cx="12" cy="9" r="1.5" fill="currentColor"/>
+                </svg>
+              </span>
+              <h3 class="skill-card-title">AI &amp; ML</h3>
+            </header>
+            <ul class="skill-items">
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M8 4h8l-1 14H9L8 4zM10 8h4"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Python</span><span class="skill-item-pct">85%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 85%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 16c2-4 4-6 8-6s6 2 8 6"/><circle cx="8" cy="8" r="2"/><circle cx="16" cy="10" r="2"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">ML Basics</span><span class="skill-item-pct">78%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 78%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">OpenAI APIs</span><span class="skill-item-pct">76%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 76%"></span></div>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Tools -->
+          <article class="skill-card hover-lift" data-aos="fade-up" data-aos-delay="260">
+            <header class="skill-card-head">
+              <span class="skill-cat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </span>
+              <h3 class="skill-card-title">Tools</h3>
+            </header>
+            <ul class="skill-items">
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><path d="M8 6h5a4 4 0 0 1 0 8h-5M8 12h6a4 4 0 0 1 0 8H8"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Git</span><span class="skill-item-pct">88%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 88%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.34-3.37-1.34-.45-1.16-1.12-1.47-1.12-1.47-.92-.65.07-.64.07-.64 1.02.07 1.55 1.05 1.55 1.05.9 1.55 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.35-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.03A9.3 9.3 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.3 2.75-1.03 2.75-1.03.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">GitHub</span><span class="skill-item-pct">90%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 90%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M8 3h8l1 18H7L8 3zM10 7h4"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">VS Code</span><span class="skill-item-pct">92%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 92%"></span></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+                </span>
+                <div class="skill-item-body">
+                  <div class="skill-item-row"><span class="skill-item-name">Postman</span><span class="skill-item-pct">86%</span></div>
+                  <div class="skill-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" style="--level: 86%"></span></div>
+                </div>
+              </li>
+            </ul>
+          </article>
+          </div>
+          <p class="section-lead skills-languages">
+            <strong>Spoken languages:</strong> Kannada (Native) · English (Fluent) · Hindi (Conversational)
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="page-section projects-section" id="projects">
+      <div class="container">
+        <p class="section-tag" data-aos="fade-up">Work</p>
+        <h2 class="section-heading section-heading--projects" data-aos="fade-up" data-aos-delay="50">Projects</h2>
+        <p class="projects-intro" data-aos="fade-up" data-aos-delay="100">
+          <span class="text-full">Full-stack builds across FinTech, EdTech, and AI — focused on security, scale, and clean user experience.</span>
+          <span class="text-short">FinTech, EdTech &amp; AI builds — secure, scalable, user-focused.</span>
         </p>
 
-        <div class="hero-social-row">
-          <a href="#" class="social-icon-box" aria-label="GitHub">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-          </a>
-          <a href="#" class="social-icon-box" aria-label="LinkedIn">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </a>
-          <a href="#" class="social-icon-box" aria-label="Resume">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111">
-              <path
-                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-3h8v2H8v-2z" />
-            </svg>
-          </a>
-        </div>
+        <details class="section-accordion proj-accordion" id="projAccordion">
+          <summary class="section-accordion-summary">View all projects</summary>
+        <h3 class="projects-label" data-aos="fade-up" data-aos-delay="120">Projects</h3>
+        <div class="proj-grid">
+          <article class="proj-grid-card hover-lift" data-aos="fade-up" data-aos-delay="220">
+            <div class="proj-visual proj-visual--compact proj-visual--slideshow">
+              <div class="proj-slideshow" data-proj-slideshow>
+                <img src="assets/projects/levelup/3.jpg" alt="LevelUp — architecture" class="proj-slideshow-img is-active" loading="eager" />
+                <img src="assets/projects/levelup/5.jpg" alt="LevelUp — API flow" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/6.jpg" alt="LevelUp — sign up" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/7.jpg" alt="LevelUp — landing page" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/8.jpg" alt="LevelUp — sign in" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/9.jpg" alt="LevelUp — dashboard" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/10.jpg" alt="LevelUp — course catalog" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/11.png" alt="LevelUp — app screen" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/12.jpg" alt="LevelUp — certificate" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/13.jpg" alt="LevelUp — screen" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/14.png" alt="LevelUp — screen" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/15.png" alt="LevelUp — screen" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/levelup/16.jpg" alt="LevelUp — screen" class="proj-slideshow-img" loading="lazy" />
+              </div>
+              <div class="proj-slideshow-dots proj-slideshow-dots--many" role="tablist" aria-label="LevelUp screenshots">
+                <button type="button" class="is-active" aria-label="Screenshot 1" aria-selected="true"></button>
+                <button type="button" aria-label="Screenshot 2" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 3" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 4" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 5" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 6" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 7" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 8" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 9" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 10" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 11" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 12" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 13" aria-selected="false"></button>
+              </div>
+              <span class="proj-visual-tag">EdTech · AI</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-eyebrow">01 · Full-Stack · EdTech</span>
+              <h4 class="proj-title">LevelUp — Learning Platform</h4>
+              <p class="proj-desc">
+                <span class="text-full">AI-powered learning platform for students and teachers—course catalog, dashboards, AI quizzes, and certificates with JWT role-based access and Gemini integration.</span>
+                <span class="text-short">EdTech platform with courses, dashboards, AI quizzes &amp; certificates.</span>
+              </p>
+              <details class="proj-more">
+                <summary>Features</summary>
+                <ul class="proj-features proj-features--compact">
+                  <li>Student &amp; teacher roles with secure auth</li>
+                  <li>Course explore, classroom &amp; progress tracking</li>
+                  <li>AI quiz · PDF uploads · email notifications</li>
+                </ul>
+              </details>
+              <div class="proj-tech-badges">
+                <span class="proj-tech-badge">React</span>
+                <span class="proj-tech-badge">TypeScript</span>
+                <span class="proj-tech-badge">Express</span>
+                <span class="proj-tech-badge">MongoDB</span>
+                <span class="proj-tech-badge">Gemini AI</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--primary proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">Live Demo →</a>
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--outline proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
 
-        <div class="hero-bottom-row">
-          <a href="#contact" class="btn btn-cta">Get in Touch!</a>
-          <div class="coffee-text">
-            <span class="coffee-emoji">☕</span>
-            <span class="coffee-label">Buy me a coffee</span>
-            <svg class="coffee-arrow" width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M5 5 Q15 2 20 12 Q25 22 22 28" stroke="#111" stroke-width="2" fill="none"
-                stroke-linecap="round" />
-              <path d="M18 26 L22 28 L24 24" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </div>
+          <article class="proj-grid-card hover-lift" data-aos="fade-up" data-aos-delay="280">
+            <div class="proj-visual proj-visual--compact proj-visual--slideshow">
+              <div class="proj-slideshow" data-proj-slideshow>
+                <img src="assets/projects/secure-upi/1.png" alt="Secure UPI — home" class="proj-slideshow-img is-active" loading="eager" />
+                <img src="assets/projects/secure-upi/2.png" alt="Secure UPI — dashboard" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/secure-upi/3.png" alt="Secure UPI — payment" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/secure-upi/4.png" alt="Secure UPI — AI assistant" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/secure-upi/5.png" alt="Secure UPI — fraud detection" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/secure-upi/6.png" alt="Secure UPI — transaction history" class="proj-slideshow-img" loading="lazy" />
+              </div>
+              <div class="proj-slideshow-dots" role="tablist" aria-label="Secure UPI screenshots">
+                <button type="button" class="is-active" aria-label="Screenshot 1" aria-selected="true"></button>
+                <button type="button" aria-label="Screenshot 2" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 3" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 4" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 5" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 6" aria-selected="false"></button>
+              </div>
+              <span class="proj-visual-tag">FinTech · AI</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-eyebrow">02 · FinTech · AI</span>
+              <h4 class="proj-title">Secure UPI &amp; AI Assistant</h4>
+              <p class="proj-desc">
+                <span class="text-full">Secure UPI payments with an AI assistant for guidance and suspicious-transaction detection.</span>
+                <span class="text-short">AI-powered UPI assistant with fraud detection.</span>
+              </p>
+              <details class="proj-more">
+                <summary>Features</summary>
+                <ul class="proj-features proj-features--compact">
+                  <li>AI chat for payment help &amp; FAQs</li>
+                  <li>Fraud / anomaly detection</li>
+                  <li>Secure auth &amp; encrypted flows</li>
+                </ul>
+              </details>
+              <div class="proj-tech-badges">
+                <span class="proj-tech-badge">Python</span>
+                <span class="proj-tech-badge">AI / ML</span>
+                <span class="proj-tech-badge">REST APIs</span>
+                <span class="proj-tech-badge">Security</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--primary proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">Live Demo →</a>
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--outline proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-grid-card hover-lift" data-aos="fade-up" data-aos-delay="340">
+            <div class="proj-visual proj-visual--compact proj-visual--slideshow">
+              <div class="proj-slideshow" data-proj-slideshow>
+                <img src="assets/projects/indian-lang/1.png" alt="Indian Language Learning — choose language" class="proj-slideshow-img is-active" loading="eager" />
+                <img src="assets/projects/indian-lang/2.png" alt="Indian Language Learning — lesson screen" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/indian-lang/3.png" alt="Indian Language Learning — module view" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/indian-lang/4.png" alt="Indian Language Learning — practice" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/indian-lang/5.png" alt="Indian Language Learning — progress" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/indian-lang/6.png" alt="Indian Language Learning — quiz" class="proj-slideshow-img" loading="lazy" />
+              </div>
+              <div class="proj-slideshow-dots" role="tablist" aria-label="Indian Language Learning screenshots">
+                <button type="button" class="is-active" aria-label="Screenshot 1" aria-selected="true"></button>
+                <button type="button" aria-label="Screenshot 2" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 3" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 4" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 5" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 6" aria-selected="false"></button>
+              </div>
+              <span class="proj-visual-tag">EdTech</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-eyebrow">03 · Web App</span>
+              <h4 class="proj-title">Indian Language Learning System</h4>
+              <p class="proj-desc">
+                <span class="text-full">Structured modules for learning multiple Indian languages with an accessible, responsive interface.</span>
+                <span class="text-short">Indian language learning app with structured modules.</span>
+              </p>
+              <details class="proj-more">
+                <summary>Features</summary>
+                <ul class="proj-features proj-features--compact">
+                  <li>Multi-language lesson modules</li>
+                  <li>Progress tracking UI</li>
+                  <li>Mobile-friendly layout</li>
+                </ul>
+              </details>
+              <div class="proj-tech-badges">
+                <span class="proj-tech-badge">HTML5</span>
+                <span class="proj-tech-badge">CSS3</span>
+                <span class="proj-tech-badge">JavaScript</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--primary proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">Live Demo →</a>
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--outline proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-grid-card hover-lift" data-aos="fade-up" data-aos-delay="380">
+            <div class="proj-visual proj-visual--compact proj-visual--slideshow">
+              <div class="proj-slideshow" data-proj-slideshow>
+                <img src="assets/projects/travelgenie/1.jpg" alt="TravelGenie — landing page" class="proj-slideshow-img is-active" loading="eager" />
+                <img src="assets/projects/travelgenie/2.jpg" alt="TravelGenie — trip planner steps" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/travelgenie/3rd.jpg" alt="TravelGenie — handbook examples" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/travelgenie/4.jpg" alt="TravelGenie — Paris itinerary handbook" class="proj-slideshow-img" loading="lazy" />
+                <img src="assets/projects/travelgenie/5.jpg" alt="TravelGenie — maps and locations" class="proj-slideshow-img" loading="lazy" />
+              </div>
+              <div class="proj-slideshow-dots" role="tablist" aria-label="TravelGenie screenshots">
+                <button type="button" class="is-active" aria-label="Screenshot 1" aria-selected="true"></button>
+                <button type="button" aria-label="Screenshot 2" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 3" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 4" aria-selected="false"></button>
+                <button type="button" aria-label="Screenshot 5" aria-selected="false"></button>
+              </div>
+              <span class="proj-visual-tag">Travel · AI</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-eyebrow">04 · AI Web App · 2024</span>
+              <h4 class="proj-title">TravelGenie — AI Trip Plan Generator</h4>
+              <p class="proj-desc">
+                <span class="text-full">Smart travel planner that builds personalized day-by-day itineraries from your destination, group size, budget, and travel style—powered by Gemini 2.5 Flash.</span>
+                <span class="text-short">AI trip planner with custom day-by-day itineraries via Gemini.</span>
+              </p>
+              <details class="proj-more">
+                <summary>Features</summary>
+                <ul class="proj-features proj-features--compact">
+                  <li>Real-time AI itineraries from user inputs</li>
+                  <li>Budget, theme &amp; group-type filters</li>
+                  <li>Responsive React UI · Vercel deploy</li>
+                </ul>
+              </details>
+              <div class="proj-tech-badges">
+                <span class="proj-tech-badge">React</span>
+                <span class="proj-tech-badge">TypeScript</span>
+                <span class="proj-tech-badge">Tailwind</span>
+                <span class="proj-tech-badge">Vite</span>
+                <span class="proj-tech-badge">Gemini AI</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--primary proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">Live Demo →</a>
+                <a href="https://github.com/PriyadarshanLG" class="proj-btn proj-btn--outline proj-btn--sm" target="_blank"
+                  rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
         </div>
+        </details>
       </div>
+    </section>
 
-      <div class="hero-avatar-wrapper">
-        <div class="avatar-card">
-          <div class="avatar-tape"></div>
-          <div class="floating-icon fi-code">&lt;/&gt;</div>
-          <div class="floating-icon fi-save">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#111">
-              <path
-                d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4zm-5 16a3 3 0 110-6 3 3 0 010 6zm3-10H7V5h8v4z" />
-            </svg>
-          </div>
-          <div class="floating-icon fi-terminal">&gt;_</div>
-          <img src="IMG_20260301_143329_918.jpg" alt="Profile photo" class="avatar-img" />
-          <div class="avatar-ribbon">
-            <span class="ribbon-text">Full-Stack Ninja</span>
-          </div>
+    <!-- Experience -->
+    <section class="page-section page-section-alt" id="experience">
+      <div class="container">
+        <p class="section-tag" data-aos="fade-up">Journey</p>
+        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="50">Experience</h2>
+        <p class="section-lead exp-intro" data-aos="fade-up" data-aos-delay="100">
+          <span class="text-full">Pursuing an internship at Tech Mahindra Pvt. Ltd., alongside freelance builds, team projects,
+          college tech work, and campus leadership.</span>
+          <span class="text-short">Tech Mahindra intern · freelance, projects &amp; leadership.</span>
+        </p>
+
+        <details class="section-accordion exp-accordion" id="expAccordion">
+          <summary class="section-accordion-summary">View experience details</summary>
+        <div class="exp-grid">
+          <article class="exp-card exp-card--featured hover-lift" data-aos="fade-up" data-aos-delay="80">
+            <div class="exp-brand-row">
+              <img src="assets/companies/techmahindra.png" alt="Tech Mahindra Pvt. Ltd." class="exp-logo" width="120" height="29" loading="lazy" />
+              <header class="exp-card-head exp-card-head--inline">
+                <span class="exp-badge exp-badge--intern">Internship</span>
+                <time class="exp-date" datetime="2026">2026 – Present</time>
+              </header>
+            </div>
+            <h3 class="exp-title">Pursuing Software Engineering Intern</h3>
+            <p class="exp-org">Tech Mahindra Pvt. Ltd.</p>
+            <p class="exp-summary">
+              Currently pursuing an internship with Tech Mahindra, gaining exposure to enterprise software delivery,
+              agile workflows, and professional engineering practices.
+            </p>
+            <ul class="exp-list">
+              <li>Onboarding into corporate IT processes, documentation, and team collaboration</li>
+              <li>Building practical skills in assigned modules under mentor guidance</li>
+              <li>Applying MERN stack, APIs, and problem-solving in a product-focused environment</li>
+            </ul>
+          </article>
+
+          <article class="exp-card hover-lift" data-aos="fade-up" data-aos-delay="120">
+            <header class="exp-card-head">
+              <span class="exp-badge exp-badge--freelance">Freelance</span>
+              <time class="exp-date" datetime="2024">2024 – Present</time>
+            </header>
+            <h3 class="exp-title">Web Development Freelance</h3>
+            <p class="exp-org">Independent · Remote &amp; Local Clients</p>
+            <p class="exp-summary">
+              Designed and delivered responsive websites and small web applications for clients and peers.
+            </p>
+            <ul class="exp-list">
+              <li>Built portfolio and business landing pages with modern UI</li>
+              <li>Implemented contact forms, APIs, and deployment-ready code</li>
+              <li>Used MERN stack, HTML/CSS, and JavaScript based on project needs</li>
+            </ul>
+          </article>
+
+          <article class="exp-card hover-lift" data-aos="fade-up" data-aos-delay="180">
+            <header class="exp-card-head">
+              <span class="exp-badge exp-badge--team">Team Projects</span>
+              <time class="exp-date" datetime="2023">2023 – Present</time>
+            </header>
+            <h3 class="exp-title">Collaborative Software Development</h3>
+            <p class="exp-org">Hackathons · Group Coursework · GitHub Teams</p>
+            <p class="exp-summary">
+              Worked in teams to ship full-stack products from idea to working demo.
+            </p>
+            <ul class="exp-list">
+              <li>Secure UPI &amp; AI payment system — FinTech + ML features</li>
+              <li>Learning Management System — auth, courses, enrollments</li>
+              <li>Practiced Git branching, code reviews, and agile task splits</li>
+            </ul>
+          </article>
+
+          <article class="exp-card hover-lift" data-aos="fade-up" data-aos-delay="240">
+            <header class="exp-card-head">
+              <span class="exp-badge exp-badge--college">College Tech</span>
+              <time class="exp-date" datetime="2023">2023 – Present</time>
+            </header>
+            <h3 class="exp-title">CSE Projects &amp; Technical Work</h3>
+            <p class="exp-org">Navkis College of Engineering · Hassan</p>
+            <p class="exp-summary">
+              Applied coursework and lab concepts to real applications and campus tech initiatives.
+            </p>
+            <ul class="exp-list">
+              <li>DSA, DBMS, Web Technologies, and AI lab implementations</li>
+              <li>Indian Language Learning System and responsive web builds</li>
+              <li>Certifications: IBM AI, IIT Bombay JS, NPTEL Cloud, Udemy Git</li>
+            </ul>
+          </article>
+
+          <article class="exp-card hover-lift" data-aos="fade-up" data-aos-delay="300">
+            <header class="exp-card-head">
+              <span class="exp-badge exp-badge--lead">Leadership</span>
+              <time class="exp-date" datetime="2023">2023 – Present</time>
+            </header>
+            <h3 class="exp-title">Campus Leadership &amp; Activities</h3>
+            <p class="exp-org">College Clubs · Workshops · Hackathons</p>
+            <p class="exp-summary">
+              Led initiatives, coordinated events, and represented teams on and off campus.
+            </p>
+            <ul class="exp-list">
+              <li><strong>College Club Lead</strong> — events, operations, and team coordination</li>
+              <li><strong>Hackathon Participant</strong> — rapid prototyping under time pressure</li>
+              <li><strong>Workshop Volunteer</strong> — planning and on-site technical support</li>
+            </ul>
+          </article>
+        </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="page-section" id="contact">
+      <div class="container" data-aos="fade-up">
+        <p class="section-tag">Contact</p>
+        <h2 class="section-heading">Contact</h2>
+        <p class="section-lead contact-intro">
+          Based in Hassan, Karnataka. Available for internships, freelance work, and full-time roles
+          in software development or AI.
+        </p>
+        <div class="contact-split">
+          <!-- Formspree: sign up at formspree.io, create a form, paste your form ID below -->
+          <form class="contact-form" id="contactForm" novalidate
+            data-formspree="https://formspree.io/f/YOUR_FORM_ID">
+            <label class="form-field" for="contactName">
+              <span class="form-label">Name</span>
+              <input type="text" id="contactName" name="name" required autocomplete="name"
+                placeholder="Your full name" />
+            </label>
+            <label class="form-field" for="contactEmail">
+              <span class="form-label">Email</span>
+              <input type="email" id="contactEmail" name="email" required autocomplete="email"
+                placeholder="you@example.com" />
+            </label>
+            <label class="form-field" for="contactMessage">
+              <span class="form-label">Message</span>
+              <textarea id="contactMessage" name="message" rows="5" required
+                placeholder="Tell me about an internship, project, or collaboration…"></textarea>
+            </label>
+            <!-- Honeypot for spam (Formspree) -->
+            <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="cta-pill cta-pill-dark contact-submit" id="contactSubmit">
+              <span class="submit-text">Send Message</span>
+              <span class="submit-loading" aria-hidden="true">Sending…</span>
+              <span class="cta-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="form-hint" id="formHint">Messages are delivered securely via Formspree.</p>
+          </form>
+          <aside class="contact-side">
+            <div class="contact-details">
+              <p><strong>Location</strong><br />Hassan, Karnataka</p>
+              <p><strong>Phone</strong><br /><a href="tel:+916362326156">+91 6362326156</a></p>
+            </div>
+
+            <div class="social-block">
+              <p class="social-heading">Connect</p>
+              <div class="social-links" role="list">
+                <a href="https://github.com/PriyadarshanLG" class="social-link" target="_blank"
+                  rel="noopener noreferrer" aria-label="GitHub — PriyadarshanLG" role="listitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.166 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.021C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  <span class="social-name">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/priyadarshanlg" class="social-link" target="_blank"
+                  rel="noopener noreferrer" aria-label="LinkedIn — priyadarshanlg" role="listitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.062 2.062 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  <span class="social-name">LinkedIn</span>
+                </a>
+                <a href="mailto:priyadarshanplg@gmail.com" class="social-link" aria-label="Email — priyadarshanplg@gmail.com" role="listitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="M2 7l10 7 10-7"/>
+                  </svg>
+                  <span class="social-name">Gmail</span>
+                </a>
+                <!-- Optional: replace href with your Instagram profile URL, or remove this link -->
+                <a href="https://www.instagram.com/reach.daxxhan" class="social-link social-link--optional" target="_blank"
+                  rel="noopener noreferrer" aria-label="Instagram" role="listitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                  </svg>
+                  <span class="social-name">Instagram</span>
+                </a>
+              </div>
+            </div>
+
+            <p class="contact-resume">
+              <strong>Resume</strong><br />
+              <a href="assets/Priyadarshan_L_G_Resume.pdf" class="resume-link" download="Priyadarshan_L_G_Resume.pdf"
+                target="_blank" rel="noopener noreferrer">Download PDF ↓</a>
+            </p>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- ===== PROGRAMMING LANGUAGES ROW ===== -->
-    <div class="hero-tech-container">
-      <div class="hero-tech-row">
-        <div class="tech-pill-large">
-          <span class="tech-icon">⬢</span> Node.js
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">⚛️</span> React
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">🐍</span> Python
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">JS</span> JavaScript
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">🛡️</span> HTML
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">TS</span> TypeScript
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">☁️</span> Google Cloud
-        </div>
-        <div class="tech-pill-large">
-          <span class="tech-icon">🐳</span> Docker
-        </div>
-      </div>
-    </div>
+  </main>
 
-    <!-- ===== TORN EDGE DIVIDER ===== -->
-    <div class="torn-divider">
-      <div class="torn-plaster"></div>
-    </div>
-
-    <!-- ===== JOURNEY ===== -->
-    <section class="section journey-section" id="journey">
-      <div class="section-header">
-        <h2 class="section-title">My Journey <span class="ribbon-middle">🗺</span></h2>
-        <p class="section-sub">From Albania to Munich — a global engineering story</p>
-      </div>
-
-      <div class="journey-grid">
-        <!-- Map -->
-        <div class="map-card card">
-          <div class="map-container">
-            <svg viewBox="0 0 600 450" class="europe-map" xmlns="http://www.w3.org/2000/svg">
-              <!-- Stylized Europe landmass -->
-              <rect width="600" height="450" fill="#f5f0e8" rx="12" />
-              <!-- Route line -->
-              <polyline points="395,310 370,240 310,200 180,155" stroke="#FFD600" stroke-width="3" fill="none"
-                stroke-dasharray="8,4" />
-              <!-- Albania pin -->
-              <g class="map-pin" transform="translate(392,308)">
-                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
-                <text x="0" y="5" text-anchor="middle" font-size="14">🇦🇱</text>
-                <rect x="-30" y="-42" width="60" height="22" fill="#111" rx="4" />
-                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">Albania</text>
-              </g>
-              <!-- France pin -->
-              <g class="map-pin" transform="translate(268,240)">
-                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
-                <text x="0" y="5" text-anchor="middle" font-size="14">🇫🇷</text>
-                <rect x="-28" y="-42" width="56" height="22" fill="#111" rx="4" />
-                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">France</text>
-              </g>
-              <!-- Germany pin -->
-              <g class="map-pin" transform="translate(310,195)">
-                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
-                <text x="0" y="5" text-anchor="middle" font-size="14">🇩🇪</text>
-                <rect x="-36" y="-42" width="72" height="22" fill="#111" rx="4" />
-                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">Germany</text>
-              </g>
-              <!-- USA pin (off map left) -->
-              <g class="map-pin" transform="translate(80,150)">
-                <circle cx="0" cy="0" r="14" fill="#FFD600" stroke="#111" stroke-width="3" />
-                <text x="0" y="5" text-anchor="middle" font-size="14">🇺🇸</text>
-                <rect x="-22" y="-42" width="44" height="22" fill="#111" rx="4" />
-                <text x="0" y="-26" text-anchor="middle" font-size="11" fill="#FFD600" font-weight="bold">USA</text>
-              </g>
-              <!-- dashed to USA -->
-              <polyline points="180,155 80,150" stroke="#FFD600" stroke-width="3" fill="none" stroke-dasharray="8,4" />
-              <!-- Map label -->
-              <text x="300" y="420" text-anchor="middle" font-size="13" fill="#888" font-family="Space Grotesk">A global
-                engineering journey</text>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Timeline -->
-        <div class="timeline-card card">
-          <h3 class="timeline-title">Career Timeline</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year">2020 – Present</span>
-                <h4>Senior Software Engineer</h4>
-                <p>Munich, Germany — Cloud-native apps with Go, Kubernetes & GCP</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year">2017 – 2020</span>
-                <h4>Software Engineer</h4>
-                <p>France — Full-stack development with React & Node.js</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year">2015 – 2017</span>
-                <h4>Junior Developer</h4>
-                <p>Albania — Started career in web development & Python</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <span class="tl-year">2009 – 2013</span>
-                <h4>BSc Computer Science</h4>
-                <p>University of Tirana, Albania</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SKILLS ===== -->
-    <section class="section skills-section" id="skills">
-      <div class="section-header">
-        <h2 class="section-title">Tech Stack</h2>
-        <p class="section-sub">Technologies I work with daily</p>
-      </div>
-
-      <div class="skills-categories">
-
-        <div class="skill-group card">
-          <h3 class="skill-group-title"><span class="skill-icon">🎨</span> Frontend</h3>
-          <div class="skill-grid">
-            <div class="skill-pill">React</div>
-            <div class="skill-pill">TypeScript</div>
-            <div class="skill-pill">Next.js</div>
-            <div class="skill-pill">Vue.js</div>
-            <div class="skill-pill">CSS/SCSS</div>
-            <div class="skill-pill">Tailwind</div>
-          </div>
-        </div>
-
-        <div class="skill-group card">
-          <h3 class="skill-group-title"><span class="skill-icon">⚙️</span> Backend</h3>
-          <div class="skill-grid">
-            <div class="skill-pill">Node.js</div>
-            <div class="skill-pill">Go</div>
-            <div class="skill-pill">Python</div>
-            <div class="skill-pill">Express</div>
-            <div class="skill-pill">GraphQL</div>
-            <div class="skill-pill">REST APIs</div>
-          </div>
-        </div>
-
-        <div class="skill-group card">
-          <h3 class="skill-group-title"><span class="skill-icon">☁️</span> Cloud & DevOps</h3>
-          <div class="skill-grid">
-            <div class="skill-pill">Google Cloud</div>
-            <div class="skill-pill">Docker</div>
-            <div class="skill-pill">Kubernetes</div>
-            <div class="skill-pill">CI/CD</div>
-            <div class="skill-pill">Terraform</div>
-            <div class="skill-pill">GitHub Actions</div>
-          </div>
-        </div>
-
-        <div class="skill-group card">
-          <h3 class="skill-group-title"><span class="skill-icon">🗄️</span> Databases</h3>
-          <div class="skill-grid">
-            <div class="skill-pill">PostgreSQL</div>
-            <div class="skill-pill">MongoDB</div>
-            <div class="skill-pill">Redis</div>
-            <div class="skill-pill">MySQL</div>
-            <div class="skill-pill">Firebase</div>
-            <div class="skill-pill">BigQuery</div>
-          </div>
-        </div>
-
-        <div class="skill-group card">
-          <h3 class="skill-group-title"><span class="skill-icon">🛠️</span> Tools</h3>
-          <div class="skill-grid">
-            <div class="skill-pill">Git</div>
-            <div class="skill-pill">VSCode</div>
-            <div class="skill-pill">Figma</div>
-            <div class="skill-pill">Postman</div>
-            <div class="skill-pill">Jira</div>
-            <div class="skill-pill">Linux</div>
-          </div>
-        </div>
-
-        <!-- Languages spoken -->
-        <div class="skill-group card languages-card">
-          <h3 class="skill-group-title"><span class="skill-icon">🌍</span> Languages</h3>
-          <div class="lang-list">
-            <div class="lang-item">
-              <div class="lang-meta">
-                <span>Albanian</span><span class="lang-level">Native</span>
-              </div>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:100%"></div>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-meta">
-                <span>English</span><span class="lang-level">Fluent</span>
-              </div>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:90%"></div>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-meta">
-                <span>German</span><span class="lang-level">Professional</span>
-              </div>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:75%"></div>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-meta">
-                <span>French</span><span class="lang-level">Conversational</span>
-              </div>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:55%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== FEATURED PROJECT ===== -->
-    <section class="section project-section" id="projects">
-      <div class="section-header">
-        <h2 class="section-title">Featured Project</h2>
-        <p class="section-sub">Building tools that developers love</p>
-      </div>
-
-      <div class="project-grid">
-        <div class="project-card card featured">
-          <div class="project-tag">Open Source</div>
-          <h3 class="project-name">LazyFire 🔥</h3>
-          <p class="project-desc">
-            A CLI tool for lazy developers. Automate your Firebase deployments,
-            manage environments, and ship faster with a single command.
-            Built with Go for maximum performance.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Go</span>
-            <span class="tech-tag">CLI</span>
-            <span class="tech-tag">Firebase</span>
-            <span class="tech-tag">Open Source</span>
-          </div>
-          <div class="project-code-snippet">
-            <pre><code><span class="code-comment">// Deploy with one command</span>
-<span class="code-cmd">$ lazyfire deploy --env production</span>
-<span class="code-output">✓ Functions deployed (3.2s)</span>
-<span class="code-output">✓ Hosting deployed (1.4s)</span>
-<span class="code-output">✓ Rules updated (0.8s)</span>
-<span class="code-success">🔥 Deployed successfully!</span></code></pre>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
-            <a href="#" class="btn btn-secondary btn-sm">Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-tag">Web App</div>
-          <h3 class="project-name">CloudDash ☁️</h3>
-          <p class="project-desc">
-            A real-time cloud infrastructure monitoring dashboard built with React and
-            Google Cloud APIs. Visualize costs, usage, and alerts in one place.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">GCP</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Charts.js</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
-          </div>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-tag">API</div>
-          <h3 class="project-name">Nexus API 🔗</h3>
-          <p class="project-desc">
-            High-performance REST & GraphQL API gateway built with Go.
-            Handles 10k+ req/s with built-in rate limiting and auth middleware.
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">Go</span>
-            <span class="tech-tag">GraphQL</span>
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">K8s</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="btn btn-primary btn-sm">View on GitHub →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EDUCATION ===== -->
-    <section class="section education-section">
-      <div class="section-header">
-        <h2 class="section-title">Education</h2>
-      </div>
-      <div class="edu-card card">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-info">
-          <h3>Bachelor's in Computer Science</h3>
-          <p class="edu-school">University of Tirana, Albania</p>
-          <p class="edu-years">2009 – 2013</p>
-        </div>
-        <div class="edu-badge">BSc</div>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="section contact-section" id="contact">
-      <div class="section-header">
-        <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-sub">Got a project in mind? Let's build something awesome.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info card">
-          <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <div>
-              <strong>Location</strong>
-              <p>Munich, Germany</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">📧</span>
-            <div>
-              <strong>Email</strong>
-              <p>marjo@ballabani.dev</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">💼</span>
-            <div>
-              <strong>LinkedIn</strong>
-              <p>linkedin.com/in/marjoballabani</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">🐙</span>
-            <div>
-              <strong>GitHub</strong>
-              <p>github.com/marjoballabani</p>
-            </div>
-          </div>
-        </div>
-
-        <form class="contact-form card" id="contactForm">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="John Doe" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" placeholder="john@example.com" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Let's work together on..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message ✉️</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-logo">MB<span class="dot">.</span></div>
-        <p>© 2024 Marjo Ballabani. Built with ❤️ and a lot of ☕</p>
-        <div class="footer-links">
-          <a href="#about">About</a>
-          <a href="#journey">Journey</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </footer>
+  <!-- Certificate image preview (tap outside image to close) -->
+  <div class="cert-lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-label="Certificate preview">
+    <img class="cert-lightbox-img" id="certLightboxImg" src="" alt="" />
   </div>
 
+  <!-- Toast: success / error feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+    <div class="toast-icon" aria-hidden="true">
+      <svg class="toast-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path class="toast-check-path" d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <div class="toast-body">
+      <strong class="toast-title" id="toastTitle">Message sent!</strong>
+      <p class="toast-msg" id="toastMsg">Thanks for reaching out. I'll reply soon.</p>
+    </div>
+    <button type="button" class="toast-close" id="toastClose" aria-label="Dismiss notification">×</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-head">
+          <a href="#about" class="footer-logo">
+            <span class="footer-name">Priyadarshan L G</span>
+          </a>
+          <a href="#about" class="footer-top">Back to top ↑</a>
+        </div>
+        <p class="footer-role">Full-Stack &amp; AI Developer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer quick links">
+        <p class="footer-col-title">Quick links</p>
+        <ul class="footer-links">
+          <li><a href="#about">Home</a></li>
+          <li><a href="#about-detail">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-connect">
+        <p class="footer-col-title">Connect</p>
+        <div class="footer-social">
+          <a href="https://github.com/PriyadarshanLG" class="footer-social-link" target="_blank"
+            rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.166 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.021C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/priyadarshanlg" class="footer-social-link" target="_blank"
+            rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.062 2.062 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="mailto:priyadarshanplg@gmail.com" class="footer-social-link" aria-label="Gmail">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 7l10 7 10-7"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/reach.daxxhan" class="footer-social-link" target="_blank"
+            rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+        <a href="assets/Priyadarshan_L_G_Resume.pdf" class="footer-resume-btn" download="Priyadarshan_L_G_Resume.pdf"
+          target="_blank" rel="noopener noreferrer">Download Resume ↓</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-bottom-meta">
+        <span class="footer-copy">© 2026 LG. All rights reserved.</span>
+        <span class="footer-built">Built with React &amp; Tailwind</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS + GSAP (Framer Motion is React-only; vanilla site uses these) -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="neo-script.js"></script>
+  <script src="neo-animations.js?v=8"></script>
 </body>
 
 </html>
